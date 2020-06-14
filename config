@@ -1,0 +1,110 @@
+# i3blocks configuration file
+#
+# The i3blocks man page describes the usage of the binary,
+# and its website describes the configuration:
+#
+#     https://vivien.github.io/i3blocks
+
+
+# Global properties
+separator=true
+separator_block_width=15
+
+[volume]
+command=./scripts/volume-pulseaudio
+interval=once
+signal=1
+#MIXER=[determined automatically]
+#SCONTROL=[determined automatically]
+##exposed format variables: ${SYMB}, ${VOL}, ${INDEX}, ${NAME}
+#LONG_FORMAT="${SYMB} ${VOL}% [${INDEX}:${NAME}]"
+#SHORT_FORMAT="${SYMB} ${VOL}% [${INDEX}]"
+LONG_FORMAT="${SYMB} ${VOL}%"
+#AUDIO_HIGH_SYMBOL=
+#AUDIO_MED_THRESH=50
+#AUDIO_MED_SYMBOL=
+#AUDIO_LOW_THRESH=30
+#AUDIO_LOW_SYMBOL=
+#AUDIO_MUTED_SYMBOL=
+AUDIO_DELTA=5
+#DEFAULT_COLOR="#ffffff"
+#MUTED_COLOR="#a0a0a0"
+USE_ALSA_NAME=0
+USE_DESCRIPTION=0
+## SUBSCRIBE=1 requires interval=persist and always uses LONG_FORMAT
+#SUBSCRIBE=0
+
+[net_interface]
+command=./scripts/iface
+color=#61C2FF
+interval=20
+#LABEL=
+#LABEL=
+
+
+[net_speed]
+command=./scripts/bandwidth/bandwidth2
+interval=persist
+markup=pango
+#LABEL=
+LABEL_UP=
+LABEL_DOWN=
+
+[memory]
+command=./scripts/memory.sh
+label=MEM
+interval=10
+
+[cpu_usage2]
+command=./scripts/cpu_usage/cpu_usage2
+markup=pango
+interval=persist
+#min_width=CPU 100.00%
+#REFRESH_TIME=1
+#LABEL=
+LABEL=💪
+#WARN_PERCENT=50
+WARN_PERCENT=80
+#DECIMALS=2
+
+[updates]
+command=./scripts/updates-arch-combined
+markup=pango
+interval=120
+
+[weather]
+command=./scripts/weather
+interval=600
+
+#[documentation]
+#full_text=Documentation
+#website=https://vivien.github.io/i3blocks
+#command=xdg-open "$website"
+#color=#f12711
+
+#[greetings]
+#color=#f5af19
+#command=echo "Hello, $USER!"
+#interval=once
+
+[battery]
+command=./scripts/battery2
+markup=pango
+interval=30
+
+[trash]
+command=./scripts/trash
+markup=pango
+interval=10
+
+[rofi-calendar]
+command=./scripts/rofi-calendar
+interval=3600
+#LABEL=
+#DATEFTM=+%a. %d. %b. %Y
+#SHORTFTM=+%d.%m.%Y
+
+[time]
+#command=echo  `date '+%H:%M:%S'
+command=echo 🕓 `date '+%H:%M:%S'`" "
+interval=1

@@ -1,0 +1,22 @@
+#!/bin/sh
+
+case "$button" in
+    1)
+        trash-empty
+        notify-send "Trash empied!"
+        ;;
+    3)
+        dolphin --name "TrashViewer" --geometry 1200x800 trash:/
+        ;;
+esac
+
+trash_items=`trash-list | wc -l`
+label=$trash_items
+bin_color="#FFC449"
+
+if [ $label -eq 0 ]; then
+  label="empty"
+  bin_color="#888888"
+fi
+#echo "<span color='${bin_color}'> $label</span>"
+echo "<span color='${bin_color}' rise='-2500'>🗑 $label</span>"

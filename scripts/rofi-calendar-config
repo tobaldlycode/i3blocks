@@ -1,0 +1,19 @@
+* {
+  foreground: #ffeedd;
+  backlight: #ccffeedd;
+  background-color: transparent;
+  dark: #1c1c1c;
+  cyan: #1abb9b;
+}
+
+#window {
+  transparency: "screenshot";
+  padding: 20px;
+  border: 0px;
+  border-radius: 10px;
+  width: 20ch;
+}
+
+#inputbar {
+  color: @cyan;
+}
